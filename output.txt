@@ -1,0 +1,192 @@
+################ Boots 6 environments, each with an instance of the rails app and a client that can curl #######################
+
+
+11-10-2022 10:34:57 |   - docker images -q -f dangling=true
+11-10-2022 10:34:58 |  No hanging container images to remove
+11-10-2022 10:34:58 |  Removing containers.
+11-10-2022 10:34:58 |   - docker rm -f rails-master
+11-10-2022 10:34:58 |   - Removed rails-master
+11-10-2022 10:34:58 |   - docker rm -f rails-node1
+11-10-2022 10:34:59 |   - Removed rails-node1
+11-10-2022 10:34:59 |   - docker rm -f rails-node2
+11-10-2022 10:34:59 |   - Removed rails-node2
+11-10-2022 10:34:59 |   - docker rm -f rails-node3
+11-10-2022 10:34:59 |   - Removed rails-node3
+11-10-2022 10:34:59 |   - docker rm -f rails-node4
+11-10-2022 10:35:00 |   - Removed rails-node4
+11-10-2022 10:35:00 |   - docker rm -f rails-node5
+11-10-2022 10:35:00 |   - Removed rails-node5
+11-10-2022 10:35:00 |   - docker images -q -f dangling=true
+11-10-2022 10:35:00 |  No hanging container images to remove
+['docker', 'build', '-t', 'test_interview_rails', '-f', '/Users/ezgovind/Documents/ruby/Dockerfile', '.']
+11-10-2022 10:35:02 |   - Build is complete  b"#1 [internal] load build definition from Dockerfile\n#1 sha256:9ca954f436f66554b069a58acec3814a4e32e25f5d0511c21f3383bc50df2678\n#1 transferring dockerfile: 84B done\n#1 DONE 0.0s\n\n#2 [internal] load .dockerignore\n#2 sha256:fa66a961b1f5c6627afdcb1c5787a5af9d13e2d4729c44e690a3ebba8d31bd70\n#2 transferring context: 2B done\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/ruby:2.4.2\n#3 sha256:af4448c408f42086898ff385911d85fb61e9df101aadc7faa70599c8990cdc75\n#3 DONE 1.2s\n\n#4 [1/9] FROM docker.io/library/ruby:2.4.2@sha256:7271d0cd55da37b6f28924c9452871d77e828c4d38ef3438cfc179388209e51f\n#4 sha256:8869bedd33d312642de211382d656e4c16de2ebd8d23efbf018aa7f9f9cb7b80\n#4 DONE 0.0s\n\n#8 [internal] load build context\n#8 sha256:b87424301f89a84e5587ebc13a6b3434e59a707c75dbfce1ab53ce24dfc96ee1\n#8 transferring context: 104.75kB 0.1s done\n#8 DONE 0.1s\n\n#12 [8/9] COPY client.py ./\n#12 sha256:b43e1c8357fd5a49f7fcb5a9bbf16820095afaa90571d18391e5150b92b3030f\n#12 CACHED\n\n#10 [6/9] WORKDIR /usr/src/app\n#10 sha256:244c5153f63a9fe155b1627ea1c4f5ace300afacdd6dd151e83871d658e8411f\n#10 CACHED\n\n#5 [2/9] RUN apt-get update -yqq\n#5 sha256:b6b03275872e2c4812882da690ba16fd64df0c9f6f738388e7f68ff450c27628\n#5 CACHED\n\n#6 [3/9] RUN apt-get install -yqq --no-install-recommends nodejs\n#6 sha256:5dc95eec29a65c4d20ab90c641687df9508e9111cff402792fe79671f1dd9913\n#6 CACHED\n\n#11 [7/9] RUN bundle install\n#11 sha256:158350834c34ca35a9f896194b4c361455e2e2cd1ae2ca230196f1627af2c5dd\n#11 CACHED\n\n#9 [5/9] COPY test-interview-question-master /usr/src/app/\n#9 sha256:d3718f71febaf7db5aff06dc9a45661cab3c341280d01b08de62467aeaa684f1\n#9 CACHED\n\n#7 [4/9] RUN apt-get update && apt-get install -y \tpython3.4 \tpython3-pip\n#7 sha256:a5f48c380646a615f8bf2f8661aa1c3ff5719fd27586381ca93a1313d804abb4\n#7 CACHED\n\n#13 [9/9] RUN pip3 install requests\n#13 sha256:65c9b98b340110cb9943236a2346d4f3e4111875a0f53a0873525c5c6035dc3f\n#13 CACHED\n\n#14 exporting to image\n#14 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00\n#14 exporting layers done\n#14 writing image sha256:faa0c8c752d7728501f3d0c2bc4d261973f674c85342fe7832e48b3df4529356 done\n#14 naming to docker.io/library/test_interview_rails done\n#14 DONE 0.0s\n\nUse 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them\n"
+11-10-2022 10:35:02 |  Creating test-master network.
+11-10-2022 10:35:02 |   - docker network create -d bridge test-master
+11-10-2022 10:35:02 |  Creating test-bridge1 network.
+11-10-2022 10:35:02 |   - docker network create -d bridge test-bridge1
+11-10-2022 10:35:03 |  Creating test-bridge2 network.
+11-10-2022 10:35:03 |   - docker network create -d bridge test-bridge2
+11-10-2022 10:35:03 |  Creating test-bridge3 network.
+11-10-2022 10:35:03 |   - docker network create -d bridge test-bridge3
+11-10-2022 10:35:03 |  Creating test-bridge4 network.
+11-10-2022 10:35:03 |   - docker network create -d bridge test-bridge4
+11-10-2022 10:35:03 |  Creating test-bridge5 network.
+11-10-2022 10:35:03 |   - docker network create -d bridge test-bridge5
+['docker', 'run', '-d', '--net', 'test-master', '--name', 'rails-master', '-p', '3000:3000', 'test_interview_rails', 'bin/rails', 's', '-b', '0.0.0.0']
+11-10-2022 10:35:04 |   - New container ID b'f19a457aabbb496d042d43be20ec618a6c45ae62ea661fea2fb2d784768d28f7\n'
+['docker', 'run', '-d', '--net', 'test-bridge1', '--name', 'rails-node1', '-p', '3001:3000', 'test_interview_rails', 'bin/rails', 's', '-b', '0.0.0.0']
+11-10-2022 10:35:04 |   - New container ID b'6099c4d9176c42bafe1f4871f0006b3d66fb03f13f7cbe12c76fb87aee723684\n'
+['docker', 'run', '-d', '--net', 'test-bridge2', '--name', 'rails-node2', '-p', '3002:3000', 'test_interview_rails', 'bin/rails', 's', '-b', '0.0.0.0']
+11-10-2022 10:35:05 |   - New container ID b'f15a7ffd2400c6a0438930d932d153b67aa6b3f272c9094e30b897725b465f65\n'
+['docker', 'run', '-d', '--net', 'test-bridge3', '--name', 'rails-node3', '-p', '3003:3000', 'test_interview_rails', 'bin/rails', 's', '-b', '0.0.0.0']
+11-10-2022 10:35:05 |   - New container ID b'b2783c3860ff3010a6323b04eba02cabaa185594abb1082860b160272f74de8a\n'
+['docker', 'run', '-d', '--net', 'test-bridge4', '--name', 'rails-node4', '-p', '3004:3000', 'test_interview_rails', 'bin/rails', 's', '-b', '0.0.0.0']
+11-10-2022 10:35:06 |   - New container ID b'89c5a290381391e359e13d286ef1999d737d859f1b6158e2c27a2b622eff420d\n'
+['docker', 'run', '-d', '--net', 'test-bridge5', '--name', 'rails-node5', '-p', '3005:3000', 'test_interview_rails', 'bin/rails', 's', '-b', '0.0.0.0']
+11-10-2022 10:35:06 |   - New container ID b'fe9fd5e82d39068a12abec75b2922cf9da3d6f4dd4ce2f9d3ffbd1872987fffc\n'
+11-10-2022 10:35:06 |   - docker network connect test-bridge1 rails-master
+11-10-2022 10:35:07 |   - docker network connect test-bridge2 rails-master
+11-10-2022 10:35:07 |   - docker network connect test-bridge3 rails-master
+11-10-2022 10:35:07 |   - docker network connect test-bridge4 rails-master
+11-10-2022 10:35:07 |   - docker network connect test-bridge5 rails-master
+################ Tests that the rails process is up ################## 
+
+
+200
+11-10-2022 10:35:08 |   Ruby on Rail is up -  rails-master
+ Ruby on Rail is up -  rails-master
+200
+11-10-2022 10:35:08 |   Ruby on Rail is up -  rails-node1
+ Ruby on Rail is up -  rails-node1
+200
+11-10-2022 10:35:09 |   Ruby on Rail is up -  rails-node2
+ Ruby on Rail is up -  rails-node2
+200
+11-10-2022 10:35:09 |   Ruby on Rail is up -  rails-node3
+ Ruby on Rail is up -  rails-node3
+200
+11-10-2022 10:35:10 |   Ruby on Rail is up -  rails-node4
+ Ruby on Rail is up -  rails-node4
+200
+11-10-2022 10:35:10 |   Ruby on Rail is up -  rails-node5
+ Ruby on Rail is up -  rails-node5
+################ Tests that the client in each environment can successfully reach the rails app in the environment ################## 
+
+
+11-10-2022 10:35:11 |  Able to reach the rubyrails server
+b'200\n'
+11-10-2022 10:35:11 |   Ruby on Rail is up -  rails-master
+ Ruby on Rail is up -  rails-master
+11-10-2022 10:35:11 |  Able to reach the rubyrails server
+b'200\n'
+11-10-2022 10:35:11 |   Ruby on Rail is up -  rails-node1
+ Ruby on Rail is up -  rails-node1
+11-10-2022 10:35:11 |  Able to reach the rubyrails server
+b'200\n'
+11-10-2022 10:35:11 |   Ruby on Rail is up -  rails-node2
+ Ruby on Rail is up -  rails-node2
+11-10-2022 10:35:12 |  Able to reach the rubyrails server
+b'200\n'
+11-10-2022 10:35:12 |   Ruby on Rail is up -  rails-node3
+ Ruby on Rail is up -  rails-node3
+11-10-2022 10:35:12 |  Able to reach the rubyrails server
+b'200\n'
+11-10-2022 10:35:12 |   Ruby on Rail is up -  rails-node4
+ Ruby on Rail is up -  rails-node4
+11-10-2022 10:35:12 |  Able to reach the rubyrails server
+b'200\n'
+11-10-2022 10:35:12 |   Ruby on Rail is up -  rails-node5
+ Ruby on Rail is up -  rails-node5
+################ Sets up the environments as 5 nodes and one master, so that each node can talk back and forth with the master but no node can talk to any other node ################## 
+
+
+
+
+################ rails-master###################
+11-10-2022 10:35:13 |  Able to reach the rubyrails server
+ Rails server can talk from rails-master  to rails-master
+11-10-2022 10:35:13 |  Able to reach the rubyrails server
+ Rails server can talk from rails-master  to rails-node1
+11-10-2022 10:35:13 |  Able to reach the rubyrails server
+ Rails server can talk from rails-master  to rails-node2
+11-10-2022 10:35:14 |  Able to reach the rubyrails server
+ Rails server can talk from rails-master  to rails-node3
+11-10-2022 10:35:14 |  Able to reach the rubyrails server
+ Rails server can talk from rails-master  to rails-node4
+11-10-2022 10:35:15 |  Able to reach the rubyrails server
+ Rails server can talk from rails-master  to rails-node5
+
+
+################ rails-node1###################
+11-10-2022 10:35:15 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node1  to rails-master
+11-10-2022 10:35:15 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node1  to rails-node1
+11-10-2022 10:35:16 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node1  to rails-node2
+11-10-2022 10:35:16 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node1  to rails-node3
+11-10-2022 10:35:16 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node1  to rails-node4
+11-10-2022 10:35:16 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node1  to rails-node5
+
+
+################ rails-node2###################
+11-10-2022 10:35:17 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node2  to rails-master
+11-10-2022 10:35:17 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node2  to rails-node1
+11-10-2022 10:35:17 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node2  to rails-node2
+11-10-2022 10:35:18 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node2  to rails-node3
+11-10-2022 10:35:18 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node2  to rails-node4
+11-10-2022 10:35:18 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node2  to rails-node5
+
+
+################ rails-node3###################
+11-10-2022 10:35:19 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node3  to rails-master
+11-10-2022 10:35:19 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node3  to rails-node1
+11-10-2022 10:35:19 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node3  to rails-node2
+11-10-2022 10:35:20 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node3  to rails-node3
+11-10-2022 10:35:20 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node3  to rails-node4
+11-10-2022 10:35:21 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node3  to rails-node5
+
+
+################ rails-node4###################
+11-10-2022 10:35:21 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node4  to rails-master
+11-10-2022 10:35:21 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node4  to rails-node1
+11-10-2022 10:35:22 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node4  to rails-node2
+11-10-2022 10:35:22 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node4  to rails-node3
+11-10-2022 10:35:22 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node4  to rails-node4
+11-10-2022 10:35:23 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node4  to rails-node5
+
+
+################ rails-node5###################
+11-10-2022 10:35:23 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node5  to rails-master
+11-10-2022 10:35:23 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node5  to rails-node1
+11-10-2022 10:35:24 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node5  to rails-node2
+11-10-2022 10:35:24 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node5  to rails-node3
+11-10-2022 10:35:24 |  Able to reach the rubyrails server
+ Rails server cannot talk from rails-node5  to rails-node4
+11-10-2022 10:35:25 |  Able to reach the rubyrails server
+ Rails server can talk from rails-node5  to rails-node5

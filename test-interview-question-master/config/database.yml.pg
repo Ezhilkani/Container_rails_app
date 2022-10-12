@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  host: localhost
+  database: rails_dev
+  username: postgres
+  prepared_statements: false
+
+test:
+  adapter: postgresql
+  host: localhost
+  database: rails_test
+  username: postgres
+  prepared_statements: false
+
+production:
+  adapter: postgresql
+  host: localhost
+  username: postgres
+  prepared_statements: false
